@@ -1,0 +1,17 @@
+<%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/slim-select@2.12.1/dist/slimselect.min.css" %>
+<%= stylesheet_link_tag "active_admin" %>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<%= csrf_meta_tags %>
+<%= csp_meta_tag %>
+<% # On page load or when changing themes, best to add inline in `head` to avoid FOUC %>
+<%= javascript_tag nonce: true do %>
+  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+<% end %>
+<%= javascript_include_tag "https://code.jquery.com/jquery-3.7.1.min.js" %>
+<%= javascript_include_tag "https://cdn.jsdelivr.net/npm/slim-select@2.12.1/dist/slimselect.umd.min.js" %>
+<%= javascript_importmap_tags "active_admin", importmap: ActiveAdmin.importmap %>

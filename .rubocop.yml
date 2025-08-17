@@ -1,0 +1,59 @@
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: false
+
+# Prefer single quotes over double quotes
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/initializers/*.rb'
+
+# Prefer single quotes in interpolation
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+# Prefer single quotes in heredoc
+Naming/HeredocDelimiterNaming:
+  Enabled: true
+
+# Allow trailing commas in multiline arrays/hashes
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+# Prefer unless over if with negative condition
+Style/UnlessElse:
+  Enabled: true
+
+# Prefer guard clauses
+Style/GuardClause:
+  Enabled: true
+
+# Allow long lines in certain contexts
+Layout/LineLength:
+  Max: 120
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/routes.rb'
+
+# Prefer compact style for arrays/hashes
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+# Prefer compact style for blocks
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideBlockBraces:
+  EnforcedStyle: no_space
