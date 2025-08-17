@@ -21,8 +21,8 @@ gem 'stimulus-rails'
 gem 'cssbundling-rails'
 
 # Tailwind CSS for Rails
-gem 'tailwindcss-rails', '~> 3.3.2'
-gem 'tailwindcss-ruby', '~> 3.4.1'
+gem 'tailwindcss-rails', '~> 4.3.0'
+gem 'tailwindcss-ruby', '~> 4.1.11'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
