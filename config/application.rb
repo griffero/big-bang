@@ -23,5 +23,8 @@ module Pulse
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Ensure Propshaft can find built CSS (e.g., tailwind.css) from tailwindcss-rails
+    config.assets.paths << Rails.root.join("app/assets/builds")
   end
 end

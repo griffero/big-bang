@@ -25,5 +25,5 @@ const App = {
 // Mount Vue app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   const app = createApp(App)
-  app.mount('#app')
+  app.mount('app')
 })

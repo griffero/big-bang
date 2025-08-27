@@ -1,7 +1,7 @@
-import { execSync } from 'child_process';
+const { execSync } = require('child_process')
 const defaultTheme = require('tailwindcss/defaultTheme')
-const activeAdminPath = execSync('bundle show activeadmin', { encoding: 'utf-8' }).trim();
-export default {
+const activeAdminPath = execSync('bundle show activeadmin', { encoding: 'utf-8' }).trim()
+module.exports = {
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
