@@ -6,7 +6,7 @@ ActiveAdmin.setup do |config|
   # by extracting the _site_header partial into your project
   # to use your own logo, styles, etc.
   #
-  config.site_title = "Pulse"
+  config.site_title = "Big Bang"
 
   # == Load Paths
   #
@@ -127,7 +127,7 @@ ActiveAdmin.setup do |config|
   # This allows your users to comment on any resource registered with Active Admin.
   #
   # You can completely disable comments:
-  # config.comments = false
+  config.comments = false
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
