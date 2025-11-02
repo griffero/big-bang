@@ -27,7 +27,7 @@ gem 'tailwindcss-ruby', '~> 3.4.1'
 gem 'jbuilder'
 
 # ActiveAdmin 4 for admin interface
-gem 'activeadmin', '~> 4.0.0.beta15'
+gem 'activeadmin', '~> 4.0.0.beta18'
 
 # Authentication for ActiveAdmin
 gem 'devise'
