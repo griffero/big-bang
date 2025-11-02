@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FintocRails</title>
+    <%= csrf_meta_tags %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag 'application' %>
+
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'tailwind', media: 'all' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="p-4 border-b flex items-center justify-between">
+      <div class="font-semibold">Big Bang</div>
+      <nav class="space-x-4">
+        <% if user_signed_in? %>
+          <span>Hola, <%= current_user.email %></span>
+          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_method: :delete } %>
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path %>
+          <%= link_to 'Log in', new_user_session_path %>
+        <% end %>
+      </nav>
+    </header>
+
+    <% flash.each do |key, value| %>
+      <div class="p-3 m-3 rounded bg-blue-50 text-blue-800"><%= value %></div>
+    <% end %>
+
+    <div id="vue-app">
+      <div id="app"></div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

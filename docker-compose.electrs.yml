@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  bitcoind:
+    image: ruimarinho/bitcoin-core:24.0
+    container_name: bitcoind
+    restart: unless-stopped
+    volumes:
+      - bitcoind-data:/home/bitcoin/.bitcoin
+    environment:
+      - BITCOIN_NETWORK=mainnet
+      - BITCOIN_PRINTTOCONSOLE=1
+      - BITCOIN_RPCUSER=bitcoin
+      - BITCOIN_RPCPASSWORD=bitcoinrpcpassword
+      - BITCOIN_TXINDEX=1
+      - BITCOIN_SERVER=1
+    ports:
+      - '8332:8332' # RPC
+      - '8333:8333' # P2P
+
+  electrs:
+    image: ghcr.io/romanz/electrs:latest
+    container_name: electrs
+    restart: unless-stopped
+    depends_on:
+      - bitcoind
+    environment:
+      - ELECTRS_NETWORK=bitcoin
+      - ELECTRS_DB_DIR=/data
+      - ELECTRS_DAEMON_RPC_ADDR=bitcoind:8332
+      - ELECTRS_DAEMON_DIR=/home/bitcoin/.bitcoin
+      - ELECTRS_ELECTRUM_RPC_ADDR=0.0.0.0:50001
+      - ELECTRS_HTTP_ADDR=0.0.0.0:3000
+      - ELECTRS_LOG_FILTERS=INFO
+      - ELECTRS_AUTH=bitcoin:bitcoinrpcpassword
+    ports:
+      - '50001:50001'
+      - '3000:3000'
+    volumes:
+      - electrs-data:/data
+      - bitcoind-data:/home/bitcoin/.bitcoin:ro
+
+volumes:
+  bitcoind-data:
+  electrs-data:
+
+
